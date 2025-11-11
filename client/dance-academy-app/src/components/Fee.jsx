@@ -41,7 +41,7 @@ const Fee = () => {
     };
   };
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL || "";
+const BASE_URL = import.meta.env.PROD ? "https://dance-academy-portal-nigdvqjd2-varshinis-projects-0cf6f1d4.vercel.app" : "http://localhost:4000";
 
   useEffect(() => {
     if (!academyId) return;

@@ -3,7 +3,7 @@ import axios from "axios";
 import { FaEdit, FaTrash, FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL || "";
+const BASE_URL = import.meta.env.PROD ? "https://dance-academy-portal-nigdvqjd2-varshinis-projects-0cf6f1d4.vercel.app" : "http://localhost:4000";
 const API_BASE = `${BASE_URL}/admin-api/teachers`;
 
 const modalStyle = {
