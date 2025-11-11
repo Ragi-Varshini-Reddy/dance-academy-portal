@@ -26,7 +26,7 @@ const Batch = () => {
     students: [],
   });
 
-  const BASE_URL = import.meta.env.PROD ? "https://dance-academy-portal-nigdvqjd2-varshinis-projects-0cf6f1d4.vercel.app" : "http://localhost:4000";
+  const BASE_URL = import.meta.env.PROD ? "https://dance-academy-portal.vercel.app" : "http://localhost:4000";
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.withCredentials = true;
 
