@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const BASE_URL = import.meta.env.PROD ? "https://dance-academy-portal-nigdvqjd2-varshinis-projects-0cf6f1d4.vercel.app" : "http://localhost:4000";
 axios.defaults.baseURL = BASE_URL;
+axios.defaults.withCredentials = true;
 const API_BASE = `${BASE_URL}/admin-api/teachers`;
 
 const modalStyle = {
