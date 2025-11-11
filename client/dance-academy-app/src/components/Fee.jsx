@@ -42,6 +42,7 @@ const Fee = () => {
   };
 
 const BASE_URL = import.meta.env.PROD ? "https://dance-academy-portal-nigdvqjd2-varshinis-projects-0cf6f1d4.vercel.app" : "http://localhost:4000";
+axios.defaults.baseURL = BASE_URL;
 
   useEffect(() => {
     if (!academyId) return;
