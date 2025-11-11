@@ -16,9 +16,7 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "http://localhost:5173",
       "https://dance-academy-portal.vercel.app",
-      "https://dance-academy-portal-r1a9.vercel.app"
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
@@ -45,3 +43,6 @@ mongoose
   .catch((err) => console.log("DB connection error:", err));
 
 module.exports = app;
+
+// const PORT = process.env.PORT || 3000;
+// app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
