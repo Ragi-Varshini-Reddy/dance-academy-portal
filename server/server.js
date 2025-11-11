@@ -16,7 +16,7 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://dance-academy-portal.vercel.app",
+      "https://dance-academy-portal-r1a9.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
