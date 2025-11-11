@@ -1,0 +1,214 @@
+###STUDENT CRUD
+### Create Student
+POST http://localhost:3000/student-api/students
+Content-Type: application/json
+
+{
+  "name": "Lauren",
+  "photo": "https://example.com/lauren.jpg",
+  "dob": "2012-09-01",
+  "parentName": "Mr. Klem",
+  "parentPhone": "9845549010",
+  "batches": []
+}
+
+### Get All Students
+GET http://localhost:3000/student-api/students
+
+### Get One Student by ID
+GET http://localhost:3000/student-api/students/684c2222f57a3250403515de
+
+### Update Student
+PUT http://localhost:3000/student-api/students/684fb948c14bb2ede6d9018c
+Content-Type: application/json
+
+{
+  "batches": ["684eac922a615f8416d10cfd"]
+}
+
+### Delete Student
+DELETE http://localhost:3000/student-api/students/684fb948c14bb2ede6d9018c
+
+
+
+
+
+
+### BATCH CRUD
+### Create Batch
+POST http://localhost:3000/batch-api/batches
+Content-Type: application/json
+
+{
+  "name": "Batch - B",
+  "startDate": "2025-07-01",
+  "endDate": "2025-12-31",
+  "timeSlot": "4-5 PM",
+  "days": ["Tuesday", "Thursday"],
+  "location": "Hall C",
+  "teachers": ["684eab5e2a615f8416d10cd5", "684eab6e2a615f8416d10cd9"],
+  "students": ["684d439c6b896dd2bcdc89d0", "684d43706b896dd2bcdc89ce"]
+}
+
+### Get All Batches
+GET http://localhost:3000/batch-api/batches
+
+### Get One Batch
+GET http://localhost:3000/batch-api/batches/684c2720140fdc56a05385b7
+
+### Update Batch
+PUT http://localhost:3000/batch-api/batches/684d44f6d58871892cefaff5
+Content-Type: application/json
+
+{
+  "startDate": "2025-06-05",
+  "endDate": "2025-12-31"
+}
+
+### Delete Batch
+DELETE http://localhost:3000/batch-api/batches/684eabd82a615f8416d10ce2
+
+
+
+
+
+### FEE CRUD
+### Create Fee Record
+POST http://localhost:3000/fee-api/fees
+Content-Type: application/json
+
+{
+  "student": "684fbf047c3ecdf3ad022654",
+  "batch": "68505bad64a3835e86c1fc99",
+  "amount": 1000,
+  "month": "Sept 2025",
+  "paidOn": "2025-06-10",
+  "mode": "cash",
+  "status": "paid",
+  "remarks": "First month fee"
+}
+
+### Get All Fee Records (with student & batch details)
+GET http://localhost:3000/fee-api/fees
+
+### Get Fee Records for One Student
+GET http://localhost:3000/fee-api/fees/student/684fbf047c3ecdf3ad022654
+
+### Update a Fee Record
+PUT http://localhost:3000/fee-api/fees/684fbf047c3ecdf3ad022654
+Content-Type: application/json
+
+{
+  "status": "paid",
+  "remarks": "Payment delayed"
+}
+
+### Delete a Fee Record
+DELETE http://localhost:3000/fee-api/fees/684c36742fd6aed1b6ea0c3e
+
+### Filter Fees by Status (e.g., pending)
+GET http://localhost:3000/fee-api/fees/filter?status=paid
+
+### Filter Fees by Month
+GET http://localhost:3000/fee-api/fees/filter?month=Sept%202025
+
+### Filter Fees by Batch and Status
+GET http://localhost:3000/fee-api/fees/filter?batch=684c30813989d6d1074cad6e&status=pending
+
+### Filter Fees by Month, Batch and Status
+GET http://localhost:3000/fee-api/fees/filter?month=Sept%202025&batch=684c30813989d6d1074cad6e&status=paid
+
+### Generate missing fee records for existing batch students
+GET http://localhost:3000/batch-api/generate-missing-fees
+Accept: application/json
+
+
+
+
+### ATTENDANCE CRUD
+### Submit Attendance
+POST http://localhost:3000/attendance-api/attendance/684c30813989d6d1074cad6e
+Content-Type: application/json
+
+{
+  "date": "2025-06-13",
+  "teacher": "684c1d470d902ad38eee98a6",
+  "attendance": [
+    { "studentId": "684c22fdf57a3250403515e4", "present": true }
+  ],
+  "notes": "Choreography session"
+}
+
+### View Attendance by Teacher
+GET http://localhost:3000/attendance-api/attendance/684c30813989d6d1074cad6e/684c1d470d902ad38eee98a6
+
+### Admin View for Attendance by Date
+GET http://localhost:3000/attendance-api/attendance-view/684c30813989d6d1074cad6e/2025-06-13
+
+
+### Get Assigned Batches
+GET http://localhost:3000/teacher-api/my-batches/684eb278c82ad0294223cdb1
+
+
+
+
+### AUTHENTICATION
+### Admin Signup
+POST http://localhost:3000/auth-api/signup
+Content-Type: application/json
+
+{
+  "username": "admin1",
+  "password": "admin1"
+}
+
+### Admin Login
+POST http://localhost:3000/auth-api/login
+Content-Type: application/json
+
+{
+  "username": "admin1",
+  "password": "admin1"
+}
+
+### Teacher Login
+POST http://localhost:3000/auth-api/login
+Content-Type: application/json
+
+{
+  "role": "teacher",
+  "username": "teacher",
+  "password": "securepass"
+}
+
+
+
+
+
+### TEACHER CRUD
+### Create teacher (admin defines login)
+POST http://localhost:3000/admin-api/teachers
+Content-Type: application/json
+
+{
+  "name": "Teacher C",
+  "username": "teacher2",
+  "password": "teacher2"
+}
+
+### Get all teachers
+GET http://localhost:3000/admin-api/teachers
+
+### Get one teacher by ID
+GET http://localhost:3000/admin-api/teachers/684c1ba00d902ad38eee98a3
+
+### Update teacher
+PUT http://localhost:3000/admin-api/teachers/684d33f4c733910b475b67d9
+Content-Type: application/json
+
+{
+  "password": "teacher"
+}
+
+### Delete teacher
+DELETE http://localhost:3000/admin-api/teachers/684c1ba00d902ad38eee98a3
